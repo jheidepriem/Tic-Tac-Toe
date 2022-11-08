@@ -6,3 +6,12 @@ class Player {
     this.turn = ``
   }
 }
+
+takeTurn() {
+  if (this.turn === player1) {
+    this.turn = player2
+  } else if (this.turn === player2) {
+    this.turn = player1
+  }
+}
+  
