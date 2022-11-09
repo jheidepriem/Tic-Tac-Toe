@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet"> 
+</head>
+<body class="body-container">
+  <aside class="left-side">PLAYER 1<p>☀️</p>
+    <div class="player1-score">Wins:</div>
+   </aside>
+   <main class="main-container">
+    <h1>Tic-Tac-Toe</h1>
+      <section class="game-board">
+        <div id="box-1" class="box 1 remove-left-border remove-top-border"></div>
+        <div id="box-2" class="box 2 remove-top-border"></div>
+        <div id="box-3" class="box 3 remove-right-border remove-top-border"></div>
+        <div id="box-4" class="box 4 remove-left-border"></div>
+        <div id="box-5" class="box 5"></div>
+        <div id="box-6" class="box 6 remove-right-border"></div>
+        <div id="box-7" class="box 7 remove-left-border remove-bottom-border"></div>
+        <div id="box-8" class="box 8 remove-bottom-border "></div>
+        <div id="box-9" class="box 9 remove-right-border remove-bottom-border"></div>
+      </section>
+      <button class="clear-game-button hidden" type="submit">Clear Scores</button>
+    </main>
+    <aside class="right-side">PLAYER 2<p>🌧</p>
+      <div class="player2-score">Wins:</div></aside>
+      <script type="text/javascript" src="player.js"></script>
+      <script type="text/javascript" src="game.js"></script>
+      <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
