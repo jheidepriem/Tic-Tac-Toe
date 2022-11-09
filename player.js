@@ -3,15 +3,16 @@ class Player {
     this.id = id;
     this.token = token;
     this.wins = 0;
-    this.turn = ``
+    this.choices = [];
+    this.choice = null;
+
+  }
+
+
+takeTurn(choice) {
+  this.choice = choice
   }
 }
 
-takeTurn() {
-  if (this.turn === player1) {
-    this.turn = player2
-  } else if (this.turn === player2) {
-    this.turn = player1
-  }
-}
-  
+
+
