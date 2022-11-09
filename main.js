@@ -15,28 +15,10 @@ var clearGameButton = document.querySelector('.clear-game-button');
 var gameBoard = document.querySelector('.game-board');
 var gameHeader = document.querySelector('h1');
 
-var game;
-var currentPlayer;
-
-function determineTurn() {
-  if (game.player1.choices.length <= game.player2.choices.length) {
-    currentPlayer = game.player1
-  } else {
-    currentPlayer = game.player2
+function playRound(choice) {
+  game.playGame(choice) 
+  console.log(game.player1.choices)
+  console.log(game.player2.choices)
   }
-};
 
-function playRound(turn) {
-  determineTurn()
-  game.playGame(turn, currentPlayer)
-    if (!game.gameOver && !game.draw) {
-      determineTurn()
-    } if (game.gameOver) {
-      console.log(`Player ${currentPlayer.id} wins!`)
-      game.resetGame()
-    } if (game.draw) {
-      console.log(`It's a draw!`)
-      game.resetGame()
-    }
-};
 

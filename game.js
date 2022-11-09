@@ -17,50 +17,70 @@ class Game {
        0, 0, 0 ]
     this.gameOver = false;
     this.draw = false;
+    this.currentPlayer = null;
   };
   
-  determineWinner(player) {
+  determinePlayer() {
+    if (this.player1.choices.length === this.player2.choices.length) {
+        this.currentPlayer = this.player1
+    } else {
+        this.currentPlayer = this.player2
+    }
+}
+  
+  determineWinner() {
+    var counter = 0;
     for (var i = 0; i < this.winCombos.length; i++) {
-      if (player.choices.includes(this.winCombos[i])) {
-        player.wins++
+      for (var i = 0; i < this.winCombos[i].length; i++) {
+        if (this.currentPlayer.choices.includes(this.winCombos[i][i])) {
+          counter++
+        }
+        else {
+          counter = 0
+        }
+      }
+      if (counter === 3) {
         this.gameOver = true
+        this.currentPlayer.wins++
       } 
     } 
     return 
   };
 
-  playGame(turn, player) {
-    player.takeTurn(turn)
-        checkBoardAvailability()
-        this.determineWinner(player)
-        this.isADraw(player)
-        console.log('try again')
+  playGame(choice) {
+    this.determinePlayer()
+    this.currentPlayer.takeTurn(choice)
+    this.checkBoardAvailability(choice)
+    console.log('hi')
   };
 
-  checkBoardAvailability() {
-    for (var i = 0; i < this.board.length; i++) {
-      if (this.board[i] === 0) {
-        this.board[i] = player.token
-        }
-        player.choices.push([i])
+  checkBoardAvailability(choice) {
+    if (this.board[choice] === 0) {
+      this.board[choice] = this.currentPlayer.id
+      this.currentPlayer.choices.push(choice)
+      this.determineWinner()
+      this.isADraw()
+      console.log(this.gameOver)
+    } else {
+      console.log('Space not available, try again!')
     }
   };
 
   resetGame() {
     this.player1.choices = [];
     this.player2.choices = [];
-    this.player1.turn = null;
-    this.player2.turn = null;
+    this.player1.choice = null;
+    this.player2.choice = null;
     this.gameOver = false;
     this.draw = false;
   };
 
-  clearBoard() {
-    
-  };
+  // clearBoard() {
+
+  // };
  
-  isADraw(player) {
-    if (player.choices.length === 5) {
+  isADraw(p) {
+    if (this.currentPlayer.choices.length === 5) {
       this.draw = true
     }
   }
