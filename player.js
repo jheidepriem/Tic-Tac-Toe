@@ -3,16 +3,14 @@ class Player {
     this.id = id;
     this.token = token;
     this.wins = 0;
-    this.choices = [];
     this.choice = null;
-
+    this.choices = [];
   }
-
 
 takeTurn(choice) {
   this.choice = choice
   }
-}
+};
 
 
 

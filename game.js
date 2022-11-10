@@ -3,43 +3,73 @@ class Game {
     this.player1 = new Player(1,'☀️');
     this.player2 = new Player(2, '🌧');
     this.winCombos = [
-      [1, 4, 7],
-      [2, 5, 7],
-      [3, 6, 9],
-      [1, 2, 3],
-      [4, 5, 6], 
-      [7, 8, 9], 
-      [1, 5, 9], 
-      [3, 5, 7]];
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7], 
+      [2, 5, 8], 
+      [0, 4, 8], 
+      [2, 4, 6]];
     this.board = 
-      [1, 2, 3, 
-       4, 5, 6, 
-       7, 8, 9 ]
+      [0, 0, 0, 
+       0, 0, 0, 
+       0, 0, 0 ]
     this.gameOver = false;
     this.draw = false;
-  }
+    this.currentPlayer = null;
+  };
   
-  determineWinner(player) {
-    for (var i = 0; i < this.winCombos.length; i++) {
-      if (player.choices.includes(this.winCombos[i])) {
-        player.wins++
-        this.gameOver = true
-      } 
-    } 
-    return 
-  }
+  determinePlayer() {
+    if (this.player1.choices.length === this.player2.choices.length) {
+        this.currentPlayer = this.player1
+    } else {
+        this.currentPlayer = this.player2
+    }
+}
+  
+// determineWinner() {
+//   var count = 0;
+//     if (this.currentPlayer.choices.length < 3) {
+//       return;
+//   } else {
+//       for (i = 0; i < this.winCombos.length; i++) {
+//           for (i = 0; i < this.winCombos[i].length; i++) {
+//               if (this.currentPlayer.choices.includes(this.winCombos[i][i])) {
+//                   count++
+//               } else {
+//                   count = 0;
+//               }
+//           }
+//       }
+//       if (count === 3) {
+//           this.currentPlayer.wins++
+//           this.gameOver = true;
+//           return;
+//       } else {
+//           return;
+//       }
+//   }
+// }
 
-  playGame(choice, player) {
-    player.takeTurn(choice)
-      if (!this.player1.choices.includes(choice) || !this.player2.choices.includes(choice)) {
-        player.choices.push(choice)
-        console.log('hello')
-        this.determineWinner(player)
-        this.isADraw(player)
-      }
-      console.log("space is already chosen, please choose another")
-      return
-    } 
+  playGame(choice) {
+    this.determinePlayer()
+    console.log('hi')
+    this.currentPlayer.takeTurn(choice)
+    this.checkBoardAvailability(choice)
+  };
+
+  checkBoardAvailability(choice) {
+    if (this.board[choice] === 0) {
+      this.board[choice] = this.currentPlayer.id
+      this.currentPlayer.choices.push(choice)
+      // this.determineWinner()
+      this.isADraw()
+      console.log(this.gameOver)
+    } else {
+      console.log('Space not available, try again!')
+    }
+  };
 
   resetGame() {
     this.player1.choices = [];
@@ -48,19 +78,12 @@ class Game {
     this.player2.choice = null;
     this.gameOver = false;
     this.draw = false;
-  }
+  };
 
- 
-  isADraw(player) {
-    if (player.choices.length === 5) {
+  isADraw(p) {
+    if (this.currentPlayer.choices.length === 5) {
       this.draw = true
     }
   }
-}
-
-
-
-
-
-
+};
 
