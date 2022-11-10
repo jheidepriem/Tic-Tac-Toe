@@ -28,33 +28,23 @@ class Game {
     }
 }
   
-// determineWinner() {
-//   var count = 0;
-//     if (this.currentPlayer.choices.length < 3) {
-//       return;
-//   } else {
-//       for (i = 0; i < this.winCombos.length; i++) {
-//           for (i = 0; i < this.winCombos[i].length; i++) {
-//               if (this.currentPlayer.choices.includes(this.winCombos[i][i])) {
-//                   count++
-//               } else {
-//                   count = 0;
-//               }
-//           }
-//       }
-//       if (count === 3) {
-//           this.currentPlayer.wins++
-//           this.gameOver = true;
-//           return;
-//       } else {
-//           return;
-//       }
-//   }
-// }
+  determineWinner() {
+    if (this.currentPlayer.choices < 3) {
+      return
+    } else {
+      for (var i = 0; i < this.winCombos.length; i++) {
+        if (this.currentPlayer.choices.includes(this.winCombos[i][0]) 
+          && this.currentPlayer.choices.includes(this.winCombos[i][1]) 
+          && this.currentPlayer.choices.includes(this.winCombos[i][2])) {
+          this.currentPlayer.wins++
+          this.gameOver = true;
+        }
+      }
+    }
+  }
 
   playGame(choice) {
     this.determinePlayer()
-    console.log('hi')
     this.currentPlayer.takeTurn(choice)
     this.checkBoardAvailability(choice)
   };
@@ -63,21 +53,25 @@ class Game {
     if (this.board[choice] === 0) {
       this.board[choice] = this.currentPlayer.id
       this.currentPlayer.choices.push(choice)
-      // this.determineWinner()
+      this.determineWinner()
       this.isADraw()
-      console.log(this.gameOver)
-    } else {
+      } else {
       console.log('Space not available, try again!')
     }
   };
 
-  resetGame() {
+  resetGameData() {
     this.player1.choices = [];
     this.player2.choices = [];
     this.player1.choice = null;
     this.player2.choice = null;
+    this.board = 
+    [0, 0, 0, 
+     0, 0, 0, 
+     0, 0, 0 ]
     this.gameOver = false;
     this.draw = false;
+    this.currentPlayer = null;
   };
 
   isADraw(p) {

@@ -66,6 +66,11 @@ h1 {
   cursor: pointer;
   display: flex;
   justify-content: center;
+  font-size: larger;
+}
+
+p {
+  font-size: large;
 }
 
 .remove-top-border {
@@ -100,4 +105,8 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.disabled {
+  pointer-events: none;
 }
