@@ -28,37 +28,42 @@ class Game {
     }
 }
   
-  determineWinner() {
-    var counter = 0;
-    for (var i = 0; i < this.winCombos.length; i++) {
-      for (var i = 0; i < this.winCombos[i].length; i++) {
-        if (this.currentPlayer.choices.includes(this.winCombos[i][i])) {
-          counter++
-        }
-        else {
-          counter = 0
-        }
-      }
-      if (counter === 3) {
-        this.gameOver = true
-        this.currentPlayer.wins++
-      } 
-    } 
-    return 
-  };
+// determineWinner() {
+//   var count = 0;
+//     if (this.currentPlayer.choices.length < 3) {
+//       return;
+//   } else {
+//       for (i = 0; i < this.winCombos.length; i++) {
+//           for (i = 0; i < this.winCombos[i].length; i++) {
+//               if (this.currentPlayer.choices.includes(this.winCombos[i][i])) {
+//                   count++
+//               } else {
+//                   count = 0;
+//               }
+//           }
+//       }
+//       if (count === 3) {
+//           this.currentPlayer.wins++
+//           this.gameOver = true;
+//           return;
+//       } else {
+//           return;
+//       }
+//   }
+// }
 
   playGame(choice) {
     this.determinePlayer()
+    console.log('hi')
     this.currentPlayer.takeTurn(choice)
     this.checkBoardAvailability(choice)
-    console.log('hi')
   };
 
   checkBoardAvailability(choice) {
     if (this.board[choice] === 0) {
       this.board[choice] = this.currentPlayer.id
       this.currentPlayer.choices.push(choice)
-      this.determineWinner()
+      // this.determineWinner()
       this.isADraw()
       console.log(this.gameOver)
     } else {
@@ -75,13 +80,10 @@ class Game {
     this.draw = false;
   };
 
-  // clearBoard() {
-
-  // };
- 
   isADraw(p) {
     if (this.currentPlayer.choices.length === 5) {
       this.draw = true
     }
   }
 };
+
