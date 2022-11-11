@@ -26,7 +26,7 @@ class Game {
     } else {
         this.currentPlayer = this.player2
     }
-}
+  };
   
   determineWinner() {
     if (this.currentPlayer.choices < 3) {
@@ -41,7 +41,7 @@ class Game {
         }
       }
     }
-  }
+  };
 
   playGame(choice) {
     this.determinePlayer()
@@ -54,7 +54,8 @@ class Game {
       this.board[choice] = this.currentPlayer.id
       this.currentPlayer.choices.push(choice)
       this.determineWinner()
-      this.isADraw()
+      this.isADraw() 
+      console.log(this.draw)
       } else {
       console.log('Space not available, try again!')
     }
@@ -74,7 +75,7 @@ class Game {
     this.currentPlayer = null;
   };
 
-  isADraw(p) {
+  isADraw() {
     if (this.currentPlayer.choices.length === 5) {
       this.draw = true
     }
