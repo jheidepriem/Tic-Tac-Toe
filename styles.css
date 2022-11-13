@@ -1,3 +1,7 @@
+* {
+  font-size: 8vh;
+}
+
 .body-container {
   align-items: center;
   background-color: white;
@@ -21,7 +25,6 @@
 
 h1 {
   color: black;
-  font-size: 60px;
   justify-content: center;
   margin: 0px;
   padding: 5%;
@@ -33,7 +36,7 @@ h1 {
   border-right: 4px solid black;
   display: flex;
   flex-direction: column;
-  font-size: 35px;
+  font-size: 6vh;
   height:100vh;
   justify-content: flex-start;
   padding-top: 2%;
@@ -45,7 +48,7 @@ h1 {
   border-left: 4px solid black;
   display: flex;
   flex-direction: column;
-  font-size: 35px;
+  font-size: 6vh;
   height:100vh;
   justify-content: flex-start;
   padding-top: 2%;
@@ -69,9 +72,6 @@ h1 {
   font-size: larger;
 }
 
-p {
-  font-size: large;
-}
 
 .remove-top-border {
   border-top: 2px solid transparent;

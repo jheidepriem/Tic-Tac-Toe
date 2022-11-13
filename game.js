@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.player1 = new Player(1,'☀️');
-    this.player2 = new Player(2, '🌧');
+    this.player1 = new Player(1,'./assets/mspac.jpg');
+    this.player2 = new Player(2, './assets/ghosty.jpg');
     this.winCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -55,7 +55,6 @@ class Game {
       this.currentPlayer.choices.push(choice)
       this.determineWinner()
       this.isADraw() 
-      console.log(this.draw)
       } else {
       console.log('Space not available, try again!')
     }
