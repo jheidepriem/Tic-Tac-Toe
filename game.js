@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.player1 = new Player(1,'./assets/mspac.jpg');
-    this.player2 = new Player(2, './assets/ghosty.jpg');
+    this.player1 = new Player(1,'🌯');
+    this.player2 = new Player(2, '🌮');
     this.winCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -68,7 +68,7 @@ class Game {
     this.board = 
     [0, 0, 0, 
      0, 0, 0, 
-     0, 0, 0 ]
+     0, 0, 0 ];
     this.gameOver = false;
     this.draw = false;
     this.currentPlayer = null;
@@ -79,5 +79,10 @@ class Game {
       this.draw = true
     }
   }
-};
+
+clearWins() {
+  this.player1.wins = 0;
+  this.player2.wins = 0;
+  };
+}
 
