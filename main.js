@@ -7,12 +7,14 @@ var clearGameButton = document.querySelector('.clear-game-button');
 var gameBoard = document.querySelector('.game-board');
 var gameHeader = document.querySelector('h1');
 
+
 gameBoard.addEventListener('click', addPlayersToken);
+clearGameButton.addEventListener('click', clearScores)
+
 
 function playRound(choice) {
   game.playGame(choice) 
-  updateTurnMessage()
-  updateWinner()
+  updateMessageAndWins()
 };
 
 function addPlayersToken(event) {
@@ -21,23 +23,16 @@ function addPlayersToken(event) {
   if (game.currentPlayer.choices.includes(choice)) {
       boxes[choice].innerText = `${game.currentPlayer.token}`
   } 
-  
 };
 
-function updateTurnMessage() {
-  if (game.currentPlayer === game.player1) {
-    gameHeader.innerText = `It's Player ${game.player1.id}'s Turn!`
-  } else if (game.currentPlayer === game.player2) {
-    gameHeader.innerText = `It's Player ${game.player2.id}'s Turn!`
-  } 
-}
-  
-function updateWinner() {
+function updateMessageAndWins() {
+  var nextPlayer = game.currentPlayer.id === game.player1.id ? game.player2.id : game.player1.id
+  gameHeader.innerText = `It's Player ${nextPlayer}'s Turn!`
   if (game.currentPlayer === game.player1 && game.gameOver === true) {
-    gameHeader.innerText = `Player ${game.player1.id} Wins!`
+    gameHeader.innerText = `${game.player1.token} Wins!`
     displayReset()
   } else if (game.currentPlayer === game.player2 && game.gameOver === true) {
-    gameHeader.innerText = `Player ${game.player2.id} Wins!`
+    gameHeader.innerText = ` ${game.player2.token} Wins!`
     displayReset()
   } else if (game.draw === true) {
     gameHeader.innerText = `It's a Draw!`
@@ -45,22 +40,30 @@ function updateWinner() {
   }
   player1Score.innerText = `Wins: ${game.player1.wins}`
   player2Score.innerText = `Wins: ${game.player2.wins}`
-  };
+}
 
-  
 function displayReset() {
   if(game.gameOver = true) {
     setTimeout(function() {
       clearBoard()
     }, 2000)
    console.log(game.board)
-};
- 
+  };
+}
+  
 function clearBoard() {
   game.resetGameData() 
   for (var i = 0; i < boxes.length; i++) {
     boxes[i].innerText = ``
-    gameHeader.innerText = `It's Player 1's Turn!` 
+    gameHeader.innerText = `It's ${game.player1.token}'s Turn!` 
     }
   }
+
+function clearScores() {
+  game.resetGameData()
+  game.clearWins()
+  player1Score.innerText = `Wins: 0 `
+  player2Score.innerText = `Wins: 0`
 };
+
+//fix bug with reset and boxes being clicked
