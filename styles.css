@@ -1,3 +1,7 @@
+* {
+  font-size: 8vh;
+}
+
 .body-container {
   align-items: center;
   background-color: white;
@@ -21,7 +25,6 @@
 
 h1 {
   color: black;
-  font-size: 60px;
   justify-content: center;
   margin: 0px;
   padding: 5%;
@@ -30,10 +33,13 @@ h1 {
 
 .left-side {
   align-items: center;
+  background-image: url(./assets/tacobg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   border-right: 4px solid black;
   display: flex;
   flex-direction: column;
-  font-size: 35px;
+  font-size: 6vh;
   height:100vh;
   justify-content: flex-start;
   padding-top: 2%;
@@ -42,10 +48,13 @@ h1 {
 
 .right-side {
   align-items: center;
+  background-image: url(./assets/tacobg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   border-left: 4px solid black;
   display: flex;
   flex-direction: column;
-  font-size: 35px;
+  font-size: 6vh;
   height:100vh;
   justify-content: flex-start;
   padding-top: 2%;
@@ -69,10 +78,6 @@ h1 {
   font-size: larger;
 }
 
-p {
-  font-size: large;
-}
-
 .remove-top-border {
   border-top: 2px solid transparent;
 }
@@ -94,13 +99,15 @@ p {
 }
 
 .clear-game-button {
-  border: none;
   background-color: #c54343;
+  border: none;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
   font-size: 20px;
   padding: 4px;
   text-align: center;
+  transition: 0.7s;
 }
 
 .hidden {

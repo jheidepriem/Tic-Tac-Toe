@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.player1 = new Player(1,'☀️');
-    this.player2 = new Player(2, '🌧');
+    this.player1 = new Player(1,'🌯');
+    this.player2 = new Player(2, '🌮');
     this.winCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -20,11 +20,19 @@ class Game {
     this.currentPlayer = null;
   };
   
+  // determineNextTurn() {
+  //  if (this.currentPlayer = this.player1) {
+  //   this.currentPlayer = this.player2
+  //  } if(this.currentPlayer = this.player2) {
+  //   this.currentPlayer = this.player1
+  //  }
+  // };
+  
   determinePlayer() {
     if (this.player1.choices.length === this.player2.choices.length) {
-        this.currentPlayer = this.player1
+      this.currentPlayer = this.player1
     } else {
-        this.currentPlayer = this.player2
+      this.currentPlayer = this.player2
     }
   };
   
@@ -34,10 +42,10 @@ class Game {
     } else {
       for (var i = 0; i < this.winCombos.length; i++) {
         if (this.currentPlayer.choices.includes(this.winCombos[i][0]) 
-          && this.currentPlayer.choices.includes(this.winCombos[i][1]) 
-          && this.currentPlayer.choices.includes(this.winCombos[i][2])) {
-          this.currentPlayer.wins++
-          this.gameOver = true;
+        && this.currentPlayer.choices.includes(this.winCombos[i][1]) 
+        && this.currentPlayer.choices.includes(this.winCombos[i][2])) {
+        this.currentPlayer.wins++
+        this.gameOver = true;
         }
       }
     }
@@ -46,7 +54,7 @@ class Game {
   playGame(choice) {
     this.determinePlayer()
     this.currentPlayer.takeTurn(choice)
-    this.checkBoardAvailability(choice)
+    return this.checkBoardAvailability(choice)
   };
 
   checkBoardAvailability(choice) {
@@ -55,7 +63,7 @@ class Game {
       this.currentPlayer.choices.push(choice)
       this.determineWinner()
       this.isADraw() 
-      console.log(this.draw)
+      return true
       } else {
       console.log('Space not available, try again!')
     }
@@ -69,7 +77,7 @@ class Game {
     this.board = 
     [0, 0, 0, 
      0, 0, 0, 
-     0, 0, 0 ]
+     0, 0, 0 ];
     this.gameOver = false;
     this.draw = false;
     this.currentPlayer = null;
@@ -79,6 +87,11 @@ class Game {
     if (this.currentPlayer.choices.length === 5) {
       this.draw = true
     }
+  };
+
+clearWins() {
+  this.player1.wins = 0;
+  this.player2.wins = 0;
   }
 };
 
