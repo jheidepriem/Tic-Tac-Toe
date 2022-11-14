@@ -1,5 +1,6 @@
 var game = new Game();
 
+
 var boxes = document.querySelectorAll('.box');
 var player1Score = document.querySelector('.player1-score');
 var player2Score = document.querySelector('.player2-score');
@@ -7,15 +8,30 @@ var clearGameButton = document.querySelector('.clear-game-button');
 var gameBoard = document.querySelector('.game-board');
 var gameHeader = document.querySelector('h1');
 
+window.addEventListener('load', onPageLoad);
 gameBoard.addEventListener('click', addPlayersToken);
 clearGameButton.addEventListener('click', clearScores)
 
+
+function onPageLoad() {
+ displayLocalStorage()
+};
+
+function displayLocalStorage() {
+  if (localStorage.length > 0) {
+    game.player1.retrieveWinsFromStorage()
+    game.player2.retrieveWinsFromStorage()
+  }
+  player1Score.innerText = `Wins: ${game.player1.wins}`;
+  player2Score.innerText = `Wins: ${game.player2.wins}`;
+};
+
+
 function playRound(choice) {
  if (game.playGame(choice)) {
-  updateStartingPlayer()
-  updateWins()
+  updateWins() 
   }
- };
+};
 
 function addPlayersToken(event) {
   var choice = Number(event.target.id)
@@ -43,8 +59,8 @@ function updateWins() {
     gameHeader.innerText = `It's a Draw!`
     displayReset()
   }
-  player1Score.innerText = `Wins: ${game.player1.wins}`
-  player2Score.innerText = `Wins: ${game.player2.wins}`
+  player1Score.innerText = `Wins: ${game.player1.wins}`;
+  player2Score.innerText = `Wins: ${game.player2.wins}`;
 };
 
 function displayReset() {
@@ -67,9 +83,9 @@ function clearBoard() {
 function clearScores() {
   clearBoard()
   game.clearWins()
+  localStorage.clear()
   player1Score.innerText = `Wins: 0 `
   player2Score.innerText = `Wins: 0`
   gameBoard.classList.remove('disabled')
 };
-
 
