@@ -7,15 +7,15 @@ var clearGameButton = document.querySelector('.clear-game-button');
 var gameBoard = document.querySelector('.game-board');
 var gameHeader = document.querySelector('h1');
 
-
 gameBoard.addEventListener('click', addPlayersToken);
 clearGameButton.addEventListener('click', clearScores)
 
-
 function playRound(choice) {
-  game.playGame(choice) 
-  updateMessageAndWins()
-};
+ if (game.playGame(choice)) {
+  updateStartingPlayer()
+  updateWins()
+  }
+ };
 
 function addPlayersToken(event) {
   var choice = Number(event.target.id)
@@ -25,14 +25,19 @@ function addPlayersToken(event) {
   } 
 };
 
-function updateMessageAndWins() {
+function updateStartingPlayer() {
   var nextPlayer = game.currentPlayer.id === game.player1.id ? game.player2.id : game.player1.id
   gameHeader.innerText = `It's Player ${nextPlayer}'s Turn!`
+};
+
+function updateWins() {
   if (game.currentPlayer === game.player1 && game.gameOver === true) {
-    gameHeader.innerText = `${game.player1.token} Wins!`
+    gameHeader.innerText = ` ${game.player1.token} Wins!`
+    gameBoard.classList.add('disabled')
     displayReset()
   } else if (game.currentPlayer === game.player2 && game.gameOver === true) {
     gameHeader.innerText = ` ${game.player2.token} Wins!`
+    gameBoard.classList.add('disabled')
     displayReset()
   } else if (game.draw === true) {
     gameHeader.innerText = `It's a Draw!`
@@ -40,30 +45,31 @@ function updateMessageAndWins() {
   }
   player1Score.innerText = `Wins: ${game.player1.wins}`
   player2Score.innerText = `Wins: ${game.player2.wins}`
-}
+};
 
 function displayReset() {
-  if(game.gameOver = true) {
+  if (game.gameOver = true) {
     setTimeout(function() {
-      clearBoard()
-    }, 2000)
-   console.log(game.board)
-  };
-}
+    clearBoard()
+    gameBoard.classList.remove('disabled')
+    }, 1200)
+  }
+};
   
 function clearBoard() {
   game.resetGameData() 
-  for (var i = 0; i < boxes.length; i++) {
+    for (var i = 0; i < boxes.length; i++) {
     boxes[i].innerText = ``
-    gameHeader.innerText = `It's ${game.player1.token}'s Turn!` 
-    }
+    gameHeader.innerText = `It's Player ${game.player1.id}'s Turn!` 
   }
+};
 
 function clearScores() {
-  game.resetGameData()
+  clearBoard()
   game.clearWins()
   player1Score.innerText = `Wins: 0 `
   player2Score.innerText = `Wins: 0`
+  gameBoard.classList.remove('disabled')
 };
 
-//fix bug with reset and boxes being clicked
+
