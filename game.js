@@ -20,14 +20,6 @@ class Game {
     this.currentPlayer = null;
   };
   
-  // determineNextTurn() {
-  //  if (this.currentPlayer = this.player1) {
-  //   this.currentPlayer = this.player2
-  //  } if(this.currentPlayer = this.player2) {
-  //   this.currentPlayer = this.player1
-  //  }
-  // };
-  
   determinePlayer() {
     if (this.player1.choices.length === this.player2.choices.length) {
       this.currentPlayer = this.player1
@@ -45,6 +37,7 @@ class Game {
         && this.currentPlayer.choices.includes(this.winCombos[i][1]) 
         && this.currentPlayer.choices.includes(this.winCombos[i][2])) {
         this.currentPlayer.wins++
+        this.currentPlayer.saveWinsToStorage()
         this.gameOver = true;
         }
       }
@@ -65,7 +58,6 @@ class Game {
       this.isADraw() 
       return true
       } else {
-      console.log('Space not available, try again!')
     }
   };
 
