@@ -30,7 +30,8 @@ Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is ri
 
 ### Wins + Challenges:
 Some challenges included: 
-- Dom bugs were a challenge when trying to figure out the appropriate way to disable and enable the board as well as updating the game header correctly. 
+- Dom bugs were a challenge when trying to figure out the appropriate way to disable and enable the board as well as updating the game header correctly.
+- Another challenge included having to go back and rework how my turns started for each game. I initially built my game so that player 1 always started and then realized they were supposed to take turns. I ended up using a ternary operator instead of having to write a bunch of long conditionals to fix the problem.  
 
 Some wins included:
 - Making the game fully playable in dev tools using only the data-model. 
