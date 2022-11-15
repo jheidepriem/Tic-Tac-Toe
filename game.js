@@ -18,21 +18,34 @@ class Game {
     this.gameOver = false;
     this.draw = false;
     this.currentPlayer = null;
+    this.startingPlayer = this.player1
   };
   
-  // determineNextTurn() {
-  //  if (this.currentPlayer = this.player1) {
-  //   this.currentPlayer = this.player2
-  //  } if(this.currentPlayer = this.player2) {
-  //   this.currentPlayer = this.player1
-  //  }
-  // };
+  playGame(choice) {
+    this.determinePlayer()
+    this.currentPlayer.takeTurn(choice)
+    return this.checkBoardAvailability(choice)
+  };
   
   determinePlayer() {
+    if (this.currentPlayer === null) {
+      this.currentPlayer = this.startingPlayer
+    }
     if (this.player1.choices.length === this.player2.choices.length) {
-      this.currentPlayer = this.player1
+      this.currentPlayer = this.startingPlayer
     } else {
-      this.currentPlayer = this.player2
+      this.currentPlayer = this.startingPlayer === this.player1 ? this.player2 : this.player1
+    }
+  };
+  
+  checkBoardAvailability(choice) {
+    if (this.board[choice] === 0) {
+      this.board[choice] = this.currentPlayer.id
+      this.currentPlayer.choices.push(choice)
+      this.determineWinner()
+      this.isADraw() 
+      return true
+      } else {
     }
   };
   
@@ -45,30 +58,20 @@ class Game {
         && this.currentPlayer.choices.includes(this.winCombos[i][1]) 
         && this.currentPlayer.choices.includes(this.winCombos[i][2])) {
         this.currentPlayer.wins++
+        this.player1.saveWinsToStorage()
+        this.player2.saveWinsToStorage()
         this.gameOver = true;
         }
       }
     }
   };
 
-  playGame(choice) {
-    this.determinePlayer()
-    this.currentPlayer.takeTurn(choice)
-    return this.checkBoardAvailability(choice)
-  };
-
-  checkBoardAvailability(choice) {
-    if (this.board[choice] === 0) {
-      this.board[choice] = this.currentPlayer.id
-      this.currentPlayer.choices.push(choice)
-      this.determineWinner()
-      this.isADraw() 
-      return true
-      } else {
-      console.log('Space not available, try again!')
+  isADraw() {
+    if (this.currentPlayer.choices.length === 5) {
+      this.draw = true
     }
   };
-
+  
   resetGameData() {
     this.player1.choices = [];
     this.player2.choices = [];
@@ -81,17 +84,12 @@ class Game {
     this.gameOver = false;
     this.draw = false;
     this.currentPlayer = null;
+    this.startingPlayer = this.startingPlayer === this.player1 ? this.player2 : this.player1
   };
 
-  isADraw() {
-    if (this.currentPlayer.choices.length === 5) {
-      this.draw = true
-    }
-  };
-
-clearWins() {
-  this.player1.wins = 0;
-  this.player2.wins = 0;
+  clearWins() {
+    this.player1.wins = 0;
+    this.player2.wins = 0;
   }
 };
 
