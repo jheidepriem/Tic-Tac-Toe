@@ -12,7 +12,7 @@
 Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is right for you! Player 1 includes a burrito token and player 2 includes a taco token. Players alternate taking turns and the game automatically saves your wins to local storage. When you want to start over fresh, simply clear your board/wins at the click of a button. 
 
 ### Installation Instructions:
-- Fork the repository found [here] (https://github.com/jheidepriem/Tic-Tac-Toe)
+- Fork the repository found [here](https://github.com/jheidepriem/Tic-Tac-Toe)
 - Clone the repository to your local machine
 - cd into the project
 - Read this README thoroughly, then begin working!
