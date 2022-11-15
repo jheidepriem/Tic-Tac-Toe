@@ -9,7 +9,7 @@
 - Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
 
 ### Abstract:
-Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is right for you! Player 1 includes a burrito token and player 2 includes a taco token. Players alternate taking turns and the game automatically saved your wins to local storage. When you want to start over fresh, simply clear your board/wins at the click of a button. 
+Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is right for you! Player 1 includes a burrito token and player 2 includes a taco token. Players alternate taking turns and the game automatically saves your wins to local storage. When you want to start over fresh, simply clear your board/wins at the click of a button. 
 
 ### Installation Instructions:
 - Fork the repository found [here] (https://github.com/jheidepriem/Tic-Tac-Toe)
