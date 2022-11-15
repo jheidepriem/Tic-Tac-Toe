@@ -3,7 +3,7 @@
 ### Learning Goals:
 - Solidify and demonstrate your understanding of: 
   - DRY JavaScript
-  - event delegation to handle similar event listeners
+  - Event delegation to handle similar event listeners
 - Understand the difference between the data model and how the data is displayed on the DOM
 - Iterate through/filter DOM elements using for loops
 - Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
@@ -19,8 +19,8 @@ Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is ri
 
 ### Preview of App:
 
-![Tic-Tac-Toe](![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/108428451/201815724-d205d6a0-81a3-4e35-ad55-00f6d5cd3f85.gif)
-)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/108428451/201815724-d205d6a0-81a3-4e35-ad55-00f6d5cd3f85.gif)
+
 
 ### Context:
 - Tic-Tac-Toe is the final project for Mod1 at Turing.
