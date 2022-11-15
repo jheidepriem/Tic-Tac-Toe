@@ -14,6 +14,21 @@
   width: 100%;
 }
 
+.left-side {
+  align-items: center;
+  background-image: url(./assets/tacobg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-right: 4px solid black;
+  display: flex;
+  flex-direction: column;
+  font-size: 6vh;
+  height: 100vh;
+  justify-content: flex-start;
+  padding-top: 2%;
+  width: 20vw;
+}
+
 .main-container {
   align-items: center;
   display: flex;
@@ -31,35 +46,6 @@ h1 {
   padding-bottom: 1%;
 }
 
-.left-side {
-  align-items: center;
-  background-image: url(./assets/tacobg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-right: 4px solid black;
-  display: flex;
-  flex-direction: column;
-  font-size: 6vh;
-  height: 100vh;
-  justify-content: flex-start;
-  padding-top: 2%;
-  width: 20vw;
-}
-
-.right-side {
-  align-items: center;
-  background-image: url(./assets/tacobg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-left: 4px solid black;
-  display: flex;
-  flex-direction: column;
-  font-size: 6vh;
-  height: 100vh;
-  justify-content: flex-start;
-  padding-top: 2%;
-  width: 20vw;
-}
 
 .game-board {
   display: grid;
@@ -78,6 +64,10 @@ h1 {
   font-size: larger;
 }
 
+.box:hover {
+  cursor: pointer;
+}
+
 .remove-top-border {
   border-top: 2px solid transparent;
 }
@@ -94,10 +84,6 @@ h1 {
   border-left: 2px solid transparent;
 }
 
-.box:hover {
-  cursor: pointer;
-}
-
 .clear-game-button {
   background-color: #c54343;
   border: none;
@@ -108,6 +94,21 @@ h1 {
   padding: 4px;
   text-align: center;
   transition: 0.7s;
+}
+
+.right-side {
+  align-items: center;
+  background-image: url(./assets/tacobg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-left: 4px solid black;
+  display: flex;
+  flex-direction: column;
+  font-size: 6vh;
+  height: 100vh;
+  justify-content: flex-start;
+  padding-top: 2%;
+  width: 20vw;
 }
 
 .hidden {
