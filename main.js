@@ -38,14 +38,6 @@ function addPlayersToken(event) {
   }
 }
 
-function updateStartingPlayer() {
-  var nextPlayer =
-    game.currentPlayer.id === game.player1.id
-      ? game.player2.id
-      : game.player1.id;
-  gameHeader.innerText = `It's Player ${nextPlayer}'s Turn!`;
-}
-
 function updateWins() {
   if (game.currentPlayer === game.player1 && game.gameOver === true) {
     gameHeader.innerText = ` ${game.player1.token} Wins!`;
@@ -61,6 +53,14 @@ function updateWins() {
   }
   player1Score.innerText = `Wins: ${game.player1.wins}`;
   player2Score.innerText = `Wins: ${game.player2.wins}`;
+}
+
+function updateStartingPlayer() {
+  var nextPlayer =
+    game.currentPlayer.id === game.player1.id
+      ? game.player2.id
+      : game.player1.id;
+  gameHeader.innerText = `It's Player ${nextPlayer}'s Turn!`;
 }
 
 function displayReset() {
