@@ -19,7 +19,8 @@ Love Tic-Tac-Toe? Also love tacos and burritos? Than this Tic-Tac-Toe game is ri
 
 ### Preview of App:
 
-![Tic-Tac-Toe]()
+![Tic-Tac-Toe](![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/108428451/201815724-d205d6a0-81a3-4e35-ad55-00f6d5cd3f85.gif)
+)
 
 ### Context:
 - Tic-Tac-Toe is the final project for Mod1 at Turing.
