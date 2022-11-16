@@ -1,5 +1,7 @@
 # Tic-Tac-Toe
 
+[Open Here](https://jheidepriem.github.io/Tic-Tac-Toe/)
+
 ### Learning Goals:
 - Solidify and demonstrate your understanding of: 
   - DRY JavaScript
